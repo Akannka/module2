@@ -71,5 +71,12 @@ public:
         }
         arr[0] = value;
     }
+    std::string to_string(){
+        std::string result;
+        for (int i = 0; i < get_size(); i++){
+            result += std::to_string(arr[i]) + ' ';
+        }
+        return result;
+    }
 
 };
