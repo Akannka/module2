@@ -2,39 +2,37 @@
 #include <string>
 
 //ex2(a)
-/*
-int count_e(std::string row){
+
+int count_e(const std::string& row) {
     int result = 0;
-    for (const auto& c : row){
+    for (const auto&  c : row){
         result += c == 'e';
     }
     return result;
 }
 
 int count_e_without_r(const std::string& row){
-    int result=0;
+    int result = 0;
     std::size_t len = row.length();
-    for(int i = 0; i<len; i++){
+    for (int i = 0; i < len; i++){
         result += row[i] == 'e';
-        result-=i<len-1 && row[i+1] == 'r';
+        result -= i < len - 1 && row[i + 1] == 'r';
     }
     return result;
 }
 
-
 int main() {
-    std::string word;
-    std::cin >> word;
-    std:: cout << count_e(word) << ", " << count_e_without_r(word);
+    std::cout << "input your text: " << std::endl;
+    std::string text;
+    std::getline(std::cin, text);
+    std::cout << count_e(text) << ", " << count_e_without_r(text);
     return 0;
 }
-*/
+
+////////////////////////////////////////////////////////////////////////////////////
 
 //ex2(b)
-#include <iostream>
-#include <string>
-
-
+/*
 class DynamicArray{
     int total_size;
     int current_size;
@@ -117,3 +115,4 @@ int main() {
     }
     return 0;
 }
+*/
