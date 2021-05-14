@@ -31,6 +31,10 @@ int main() {
 */
 
 //ex2(b)
+#include <iostream>
+#include <string>
+
+
 class DynamicArray{
     int total_size;
     int current_size;
@@ -46,13 +50,13 @@ public:
     }
     float get_value(int index) const{
         if (index >= current_size){
-            throw;
+            throw -1;
         }
         return arr[index];
     }
     void set_value(int index, float value){
         if (index >= current_size){
-            throw;
+            throw -1;
         }
         arr[index] = value;
     }
@@ -70,6 +74,7 @@ public:
             arr[i] = arr[i-1];
         }
         arr[0] = value;
+        current_size++;
     }
     std::string to_string(){
         std::string result;
@@ -78,5 +83,37 @@ public:
         }
         return result;
     }
-
 };
+
+int main() {
+    auto x = DynamicArray();
+    std::cout << "empty arr: " << x.to_string() << std::endl;
+
+    std::cout << "add 1.4 and -2.5" << std::endl;
+    x.add_value(1.4f);
+    x.add_value(-2.5f);
+    std::cout << "arr[0]: " << x.get_value(0) << std::endl;
+    std::cout << "arr: " << x.to_string() << std::endl;
+
+    std::cout << "set arr[1]=5" << std::endl;
+    x.set_value(1, 5);
+    std::cout << x.to_string() << std::endl;
+    std::cout << "arr: " << x.to_string() << std::endl;
+
+    std::cout << "add 5, 6, 7, 8" << std::endl;
+    x.add_value(5);
+    x.add_value(6);
+    x.add_value(7);
+    x.add_value(8);
+    std::cout << "arr: " << x.to_string() << std::endl;
+    try{
+
+        std::cout << "*getting arr[6]*" << std::endl;
+        std::string result = "arr[6]: " + std::to_string(x.get_value(6));
+        std::cout << result << std::endl;
+    }
+    catch (int){
+        std::cout << "error" << std::endl;
+    }
+    return 0;
+}
