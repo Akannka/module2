@@ -36,6 +36,11 @@ class DynamicArray{
     int current_size;
     float *arr;
 public:
+    DynamicArray(){
+        total_size = 1;
+        current_size = 0;
+        arr = new float[total_size];
+    }
     int get_size() const{
         return current_size;
     }
@@ -50,6 +55,21 @@ public:
             throw;
         }
         arr[index] = value;
+    }
+    void add_value(float value){
+        if (current_size == total_size){
+            total_size += (total_size + 1) / 2;
+            auto *new_arr = new float [total_size];
+            for (int i = 0; i < current_size; i++){
+                new_arr[i] = arr[i];
+            }
+            delete[] arr;
+            arr = new_arr;
+        }
+        for (int i = current_size; i > 0; i--){
+            arr[i] = arr[i-1];
+        }
+        arr[0] = value;
     }
 
 };
